@@ -1,9 +1,48 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import thunk from 'redux-thunk';
+import throttle from 'lodash/throttle';
+import {createStore, applyMiddleware}  from 'redux';
 import * as serviceWorker from './serviceWorker';
+import Root from './components/Root';
+import myReducer from './reducers/myReducer';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+const loadState = () => {
+    try {
+      const serializedState = localStorage.getItem('state');
+  
+      if(serializedState === null) {
+        return undefined;
+      }
+  
+      return JSON.parse(serializedState);
+    } catch (e) {
+      return undefined;
+    }
+  };
+  
+  const saveState = (state) => {
+    try {
+      const serializedState = JSON.stringify(state);
+  
+      localStorage.setItem('state', serializedState);
+    } catch (e) {
+      // Ignore write errors;
+    }
+  };
+  
+ const peristedState = loadState();
+
+// container
+const store = createStore(myReducer,peristedState,applyMiddleware(thunk));
+
+store.subscribe(throttle(() => {
+    saveState(store.getState());
+  }, 1000));
+
+
+ReactDOM.render(<Root store = {store}  />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
