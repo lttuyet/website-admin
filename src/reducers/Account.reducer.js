@@ -26,6 +26,7 @@ function AccountReducer(state = initialState, action) {
             st.token = action.data.res.data.token;
             st.image = action.data.res.data.data.image;
             st.isLogin = true;
+            st.errorInfo = '';
             console.log(st.token);
           }
         } catch (err) {
