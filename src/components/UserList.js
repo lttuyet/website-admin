@@ -10,6 +10,7 @@ import SidebarContainer from '../containers/Sidebar.container';
 
 import './App.css';
 import UserListItem from './UserListItem';
+import TagListItem from './TagList/TagListItem';
 
 class Login extends PureComponent {
   constructor() {
@@ -17,6 +18,22 @@ class Login extends PureComponent {
     this.username = '';
     this.password = '';
     this.err = '';
+   
+  }
+
+  handleClick(i){
+    return null;
+  }
+
+  // eslint-disable-next-line react/no-deprecated
+  componentWillMount() {
+    const st = this.props;
+    st.getAllUsers(st.token);
+  }
+
+
+  renderItem(item,i){
+    return (<UserListItem index={i} name={item.name} address = {item.address} role ={item.role} email ={item.email} onClick={() => this.handleClick(item._id)}/>);
   }
 
   render() {
@@ -26,7 +43,16 @@ class Login extends PureComponent {
       return <Redirect to="/" />;
     }
 
-    const listT = ["Tiếng Anh","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React"];
+    console .log(st);
+
+    if(st.userlist) {
+      const l = st.userlist.users;
+
+      console.log("lờ nè",l);
+
+      this.list = l.map((item, i) => this.renderItem(item, i + 1));
+    }
+    // const listT = ["Tiếng Anh","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React"];
 
     return (
       <div id="page-top">
@@ -47,32 +73,27 @@ class Login extends PureComponent {
                 <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
                   <thead>
                     <tr>
+                      <th>STT</th>
                       <th>Tên</th>
                       <th>Loại tài khoản</th>
+                      <th>Email</th>
                       <th>Địa chỉ</th>
-                      <th>Tag kỹ năng</th>
                       <th>Thao tác</th>
                       
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                    <th>Tên</th>
+                      <th>STT</th>
+                      <th>Tên</th>
                       <th>Loại tài khoản</th>
+                      <th>Email</th>
                       <th>Địa chỉ</th>
-                      <th>Tag kỹ năng</th>
                       <th>Thao tác</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                   <UserListItem name = "Tên ai đó" listtag = {listT}/>
-                   <UserListItem name = "Tên ai đó 1"/>
-                   <UserListItem name = "Tên ai đó 2"/>
-                   <UserListItem name = "Tên ai đó 3"/>
-                   <UserListItem name = "Tên ai đó 4"/>
-
-                   
-                    
+                  {this.list}
                   </tbody>
                 </table>
               </div>

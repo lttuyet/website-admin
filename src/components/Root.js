@@ -5,6 +5,8 @@ import LoginContainer from '../containers/Login.container';
 import DashboardContainer from '../containers/Dashboard.container';
 import InsertAdminContainer from '../containers/InsertAdmin.container';
 import UserListContainer from '../containers/UserList.container';
+import TagListContainer from '../containers/TagList.container';
+import InsertTagContainer from '../containers/InsertTag.container';
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -18,6 +20,12 @@ const Root = ({ store }) => (
         </Route>
         <Route path="/user-list">
           <UserListContainer />
+        </Route>
+        <Route path="/tag-list">
+          <TagListContainer/>
+        </Route>
+        <Route path="/insert-tag">
+          <InsertTagContainer/>
         </Route>
         <Route path="/">
           <DashboardContainer />

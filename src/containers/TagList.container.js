@@ -1,31 +1,30 @@
 import { connect } from 'react-redux';
-// import * as actions from '../actions/index';
-import Sidebar from '../components/Sidebar';
-import * as actions from '../actions';
+import * as actions from '../actions/index';
+import TagList from '../components/TagList/TagList';
 
 const mapstToProps = state => {
   return {
     username: state.AccountReducer.username,
+    isLogin: state.AccountReducer.isLogin,
     token: state.AccountReducer.token,
     taglist: state.TagReducer.taglist,
-    userlist: state.UserReducer.userlist,
 
-    
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getAllTags : (token) => dispatch( actions.getAllTagsRequest(token)),
-    getAllUsers : (token) =>  dispatch(actions.getAllUsersRequest(token))
+    deleteTag : (token,id) => dispatch(actions.deleteTagRequest(token,id)),
+
   };
 };
-const SidebarContainer = connect(
+const TagListContainer = connect(
   mapstToProps,
   mapDispatchToProps
-)(Sidebar);
+)(TagList);
 
-export default SidebarContainer;
+export default TagListContainer;
 
 
 

@@ -59,6 +59,129 @@ export const insertAdminRequest = (body,token)=>{
         });
     });
 };
+// Get all tags
+function SendGetAllTags(token){
+    const res = axios({
+        method:'GET',
+        url:'https://apimanage.herokuapp.com/alltags',
+        headers:{Authorization: `Bearer ${token}`},
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const getAllTags = (token,res)=>({
+    type: constants.GET_ALL_TAG,
+    data: {
+        token,
+        res
+    }
+});
+
+export const getAllTagsRequest = (token) =>{
+    return (dispatch =>{
+        SendGetAllTags(token).then(res=>{
+            console.log("request",res.data);
+            return dispatch(getAllTags(token,res.data));
+        });
+    });
+};
+
+// delete Tag
+
+function SendDeleteTag(token,id){
+    const res = axios({
+        method:'POST',
+        url:'https://apimanage.herokuapp.com/deletetag',
+        headers:{Authorization: `Bearer ${token}`},
+        data: {id}
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const deleteTag = (token,id,res)=>({
+    type: constants.DELETE_TAG,
+    data: {
+        token,
+        id,
+        res
+    }
+});
+
+export const deleteTagRequest = (token,id) =>{
+    return (dispatch =>{
+        SendDeleteTag(token,id).then(res=>{
+
+            return dispatch(deleteTag(token,id,res));
+        });
+    });
+};
+// insert Tag
+function OnClickInsertTag(token,name){
+    return axios({
+        method:'POST',
+        url:'https://apimanage.herokuapp.com/inserttag',
+        headers:{Authorization: `Bearer ${token}`},
+        data: {name}
+    }).catch(err => {
+        return err;
+    });
+};
+
+export const insertTag = (token,name,res)=>({
+    type: constants.INSERT_TAG,
+    data:{
+        name,
+        token,
+        res
+    }
+});
+
+export const insertTagRequest = (token,name)=>{
+    return (dispatch  => {
+        OnClickInsertTag(token,name).then(res=>{
+            return dispatch(insertTag(token,name,res));
+        });
+    });
+};
+
+// Get all user
+function SendGetAllUsers(token){
+    const res = axios({
+        method:'GET',
+        url:'https://apimanage.herokuapp.com/allusers',
+        headers:{Authorization: `Bearer ${token}`},
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const getAllUsers = (token,res)=>({
+    type: constants.GET_ALL_USER,
+    data: {
+        token,
+        res
+    }
+});
+
+export const getAllUsersRequest = (token) =>{
+    return (dispatch =>{
+        SendGetAllUsers(token).then(res=>{
+            console.log("request",res.data);
+            return dispatch(getAllUsers(token,res.data));
+        });
+    });
+};
 
 // log out
 

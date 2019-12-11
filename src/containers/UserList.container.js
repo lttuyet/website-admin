@@ -1,16 +1,18 @@
 import { connect } from 'react-redux';
-// import * as actions from '../actions/index';
+import * as actions from '../actions/index';
 import UserList from '../components/UserList';
 
 const mapstToProps = state => {
   return {
-    username: state.AccountReducer.username,
-    
+    userlist: state.UserReducer.userlist,
+    token: state.AccountReducer.token
   };
 };
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
   return {
+    getAllTags : dispatch(actions.getAllTagsRequest()),
+    getAllUsers : (token) =>  dispatch(actions.getAllUsersRequest(token))
   };
 };
 const UserListContainer = connect(
