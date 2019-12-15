@@ -4,26 +4,24 @@
 import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import NavbarContainer from '../containers/Navbar.container';
-import SidebarContainer from '../containers/Sidebar.container';
+import NavbarContainer from '../../containers/Navbar.container';
+import SidebarContainer from '../../containers/Sidebar.container';
 
 
-import './App.css';
+import '../App.css';
 import UserListItem from './UserListItem';
-import TagListItem from './TagList/TagListItem';
+// import TagListItem from './TagList/TagListItem';
 
-class Login extends PureComponent {
+class UserList extends PureComponent {
   constructor() {
     super();
     this.username = '';
     this.password = '';
     this.err = '';
-   
+  
   }
 
-  handleClick(i){
-    return null;
-  }
+  
 
   // eslint-disable-next-line react/no-deprecated
   componentWillMount() {
@@ -31,9 +29,16 @@ class Login extends PureComponent {
     st.getAllUsers(st.token);
   }
 
+  handleClick (id) {
+    const st = this.props;
+    console.log(st,id);
+
+  }
+  
+
 
   renderItem(item,i){
-    return (<UserListItem index={i} name={item.name} address = {item.address} role ={item.role} email ={item.email} onClick={() => this.handleClick(item._id)}/>);
+    return (<UserListItem index={i} id={item._id} name={item.name} address = {item.address} role ={item.role} email ={item.email} onClick={() => this.handleClick(item._id)}/>);
   }
 
   render() {
@@ -43,12 +48,12 @@ class Login extends PureComponent {
       return <Redirect to="/" />;
     }
 
-    console .log(st);
+    // console .log(st);
 
     if(st.userlist) {
       const l = st.userlist.users;
 
-      console.log("lờ nè",l);
+      // console.log("lờ nè",l);
 
       this.list = l.map((item, i) => this.renderItem(item, i + 1));
     }
@@ -108,4 +113,4 @@ class Login extends PureComponent {
   }
 }
 
-export default Login;
+export default UserList;

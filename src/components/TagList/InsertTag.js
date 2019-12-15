@@ -1,20 +1,22 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router-dom';
-import './App.css';
+import '../App.css';
 
-import NavbarContainer from '../containers/Navbar.container';
-import SidebarContainer from '../containers/Sidebar.container';
+import NavbarContainer from '../../containers/Navbar.container';
+import SidebarContainer from '../../containers/Sidebar.container';
 
 class InsertTag extends PureComponent {
   constructor() {
     super();
     this.name = '';
+    this.err = '';
 
   }
 
   render() {
     const st = this.props;
+    this.err = st.err;
     if (!st.isLogin) {
       return <Redirect to="/login" />;
     }
@@ -47,15 +49,17 @@ class InsertTag extends PureComponent {
                                   className="form-control form-control-user"
                                   id="exampleInputName"
                                   placeholder="Nhập Tag Kỹ Năng Mới"
+                                  defaultValue = {this.name}
                                   onChange={e => {
                                     this.name = e.target.value;
+                                    this.err = '';
                                   }}
                                 />
                               </div>
 
                               <div>
                                 <label className=" col-form-label-sm text-danger">
-                                  {st.err}
+                                  {this.err}
                                 </label>
                               </div>
                               <button
@@ -64,6 +68,7 @@ class InsertTag extends PureComponent {
                                 onClick={e => {
                                   e.preventDefault();
                                   st.insertTag(st.token,this.name);
+                                  this.name = "";
                                   console.log(this.name);
                                 }}
                               >

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
-import UserList from '../components/UserList';
+import UserList from '../components/UserList/UserList';
 
 const mapstToProps = state => {
   return {

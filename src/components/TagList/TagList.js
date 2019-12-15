@@ -27,10 +27,8 @@ class TagList extends PureComponent {
     st.getAllTags(st.token);
   }
 
-
-
   handleClick  (id) {
-    console.log("Vào đây r");
+    // console.log("Vào đây r");
     const st = this.props;
     st.deleteTag(st.token,id);
     st.getAllTags(st.token);
@@ -50,12 +48,12 @@ class TagList extends PureComponent {
     if (!st.isLogin) {
       return <Redirect to="/login"/>;
     }
-    console .log(st);
+    // console .log(st);
 
     if(st.taglist) {
       const l = st.taglist;
 
-      console.log(l);
+      // console.log(l);
 
       this.list = l.map((item, i) => this.renderItem(item, i + 1));
     }

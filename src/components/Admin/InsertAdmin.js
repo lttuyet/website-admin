@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router-dom';
-import './App.css';
+import '../App.css';
 
-import NavbarContainer from '../containers/Navbar.container';
-import SidebarContainer from '../containers/Sidebar.container';
+import NavbarContainer from '../../containers/Navbar.container';
+import SidebarContainer from '../../containers/Sidebar.container';
 
 class InsertAdmin extends PureComponent {
   constructor() {

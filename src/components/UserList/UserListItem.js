@@ -1,20 +1,20 @@
 import React from 'react';
 
-import './App.css';
+import '../App.css';
 
 function UserListItem(prps) {
   // const tags1 = [1,2,3,4,5];
-  let list = [];
-  if(prps.listtag){
-  console.log(prps.listtag);
-  const tags = prps.listtag;
-  list = tags.map(number => (
-    <span className="badge badge-info ml-md-1">
-      {number}
-    </span>
-  ));
-  }
-
+  // let list = [];
+  // if(prps.listtag){
+  // console.log(prps.listtag);
+  // const tags = prps.listtag;
+  // list = tags.map(number => (
+  //   <span className="badge badge-info ml-md-1">
+  //     {number}
+  //   </span>
+  // ));
+  // }
+  
 
 
   return (
@@ -33,11 +33,11 @@ function UserListItem(prps) {
 
       <td>
           <button type = "button" className="btn btn-info" data-toggle="modal"
-                  data-target="#exampleModalScrollable">Xem chi tiết</button>
+                  data-target={`#number${prps.index}`}>Xem chi tiết</button>
         <div
           className="modal fade"
           style={{ padding: '2px !important;' }}
-          id="exampleModalScrollable"
+          id={`number${prps.index}`}
           tabIndex="-1"
           role="dialog"
           aria-labelledby="exampleModalScrollableTitle"
@@ -64,7 +64,7 @@ function UserListItem(prps) {
               <div className="modal-body m-md-1 ml-md-0 ">
                 <div className="card mydialog">
                   <img
-                    src=""
+                    src={prps.image}
                     className="card-img-top w-50 mx-auto"
                     alt="..."
                   />
