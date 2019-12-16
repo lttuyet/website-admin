@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 
 import NavbarContainer from '../../containers/Navbar.container';
 import SidebarContainer from '../../containers/Sidebar.container';
+import Footer from '../Footer';
 
 import '../App.css';
 
@@ -27,6 +28,7 @@ class Detail extends PureComponent {
             <div id="content">
               <NavbarContainer />
             </div>
+            <div className="mt-md-1">
             <div className=" container">
               <div className="card shadow mb-4 mt-md-2">
                 <div className="card-header py-3">
@@ -108,6 +110,10 @@ class Detail extends PureComponent {
               </div>
             </div>
           </div>
+        </div>
+        </div>
+        <div>
+          <Footer/>
         </div>
       </div>
     );

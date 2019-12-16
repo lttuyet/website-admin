@@ -9,6 +9,7 @@ import SidebarContainer from '../../containers/Sidebar.container';
 
 import '../App.css';
 import TagListItem from './TagListItem';
+import Footer from '../Footer';
 
 class TagList extends PureComponent {
   constructor() {
@@ -66,6 +67,7 @@ class TagList extends PureComponent {
             <div id="content">
               <NavbarContainer />
             </div>
+            <div className="mt-md-1">
             <div className=" container">
 
               <div className="card shadow mb-4 mt-md-2">
@@ -106,6 +108,10 @@ class TagList extends PureComponent {
 
             </div>
           </div>
+        </div>
+        </div>
+        <div >
+          <Footer />
         </div>
       </div>
     );

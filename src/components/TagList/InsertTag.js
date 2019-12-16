@@ -5,6 +5,7 @@ import '../App.css';
 
 import NavbarContainer from '../../containers/Navbar.container';
 import SidebarContainer from '../../containers/Sidebar.container';
+import Footer from '../Footer';
 
 class InsertTag extends PureComponent {
   constructor() {
@@ -87,6 +88,9 @@ class InsertTag extends PureComponent {
           </div>
         </div>
       </div>
+      <div >
+          <Footer />
+        </div>
       </div>
 
     );
