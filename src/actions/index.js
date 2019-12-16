@@ -183,6 +183,42 @@ export const getAllUsersRequest = (token) =>{
     });
 };
 
+// get detail user
+
+function SendGetDetailUser(token,id){
+    const res = axios({
+        method:'POST',
+        url:'https://apimanage.herokuapp.com/detailsuser',
+        headers:{Authorization: `Bearer ${token}`},
+        data: {
+            id
+        }
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const getDetailUser = (token,id,res)=>({
+    type: constants.GET_DETAIL,
+    data: {
+        token,
+        id,
+        res
+    }
+});
+
+export const getDetailUserRequest = (token,id) =>{
+    return (dispatch =>{
+        SendGetDetailUser(token,id).then(res=>{
+            console.log("request",res);
+            return dispatch(getDetailUser(token,id,res));
+        });
+    });
+};
+
 // log out
 
 export const logOut = ()=>({

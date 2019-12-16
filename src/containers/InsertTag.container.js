@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 
-import InsertTag from '../components/InsertTag';
+import InsertTag from '../components/TagList/InsertTag';
 
 const mapstToProps = state => {
   return {

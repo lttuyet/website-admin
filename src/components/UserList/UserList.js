@@ -13,39 +13,40 @@ import UserListItem from './UserListItem';
 // import TagListItem from './TagList/TagListItem';
 
 class UserList extends PureComponent {
-  constructor() {
-    super();
-    this.username = '';
-    this.password = '';
-    this.err = '';
-  
-  }
-
-  
 
   // eslint-disable-next-line react/no-deprecated
-  componentWillMount() {
+  componentDidMount() {
     const st = this.props;
     st.getAllUsers(st.token);
   }
 
   handleClick (id) {
+    
     const st = this.props;
-    console.log(st,id);
+    
+    st.getDetailUser(st.token,id);
+    
 
   }
   
 
 
   renderItem(item,i){
-    return (<UserListItem index={i} id={item._id} name={item.name} address = {item.address} role ={item.role} email ={item.email} onClick={() => this.handleClick(item._id)}/>);
+    return (<UserListItem  index={i} id={item._id} name={item.name} address = {item.address} role ={item.role} email ={item.email} onClick={() =>
+      { 
+      // e.preventDefault();
+      
+      this.handleClick(item._id);
+      // window.location.href = "/detail";
+      }}/>);
   }
 
   render() {
     const st = this.props;
 
-    if (st.isLogin) {
-      return <Redirect to="/" />;
+    console.log(st.isLogin);
+    if (!st.isLogin) {
+      return <Redirect to="/login" />;
     }
 
     // console .log(st);
@@ -69,7 +70,7 @@ class UserList extends PureComponent {
             </div>
             <div className=" container">
 
-          <div className="card shadow mb-4 mt-md-2">
+          <div className="card shadow mt-md-2">
             <div className="card-header py-3">
               <h6 className="m-0 font-weight-bold text-info">DANH SÁCH TÀI KHOẢN</h6>
             </div>
@@ -78,9 +79,9 @@ class UserList extends PureComponent {
                 <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
                   <thead>
                     <tr>
-                      <th>STT</th>
+                      <th>No.</th>
                       <th>Tên</th>
-                      <th>Loại tài khoản</th>
+                      <th>Loại</th>
                       <th>Email</th>
                       <th>Địa chỉ</th>
                       <th>Thao tác</th>
@@ -89,9 +90,9 @@ class UserList extends PureComponent {
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>STT</th>
+                      <th>No.</th>
                       <th>Tên</th>
-                      <th>Loại tài khoản</th>
+                      <th>Loại</th>
                       <th>Email</th>
                       <th>Địa chỉ</th>
                       <th>Thao tác</th>

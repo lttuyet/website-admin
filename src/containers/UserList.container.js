@@ -5,14 +5,19 @@ import UserList from '../components/UserList/UserList';
 const mapstToProps = state => {
   return {
     userlist: state.UserReducer.userlist,
-    token: state.AccountReducer.token
+    u_userinfo: state.UserReducer.u_userinfo,
+    u_taglist: state.UserReducer.u_taglist,
+    token: state.AccountReducer.token,
+    isLogin: state.AccountReducer.isLogin
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAllTags : dispatch(actions.getAllTagsRequest()),
-    getAllUsers : (token) =>  dispatch(actions.getAllUsersRequest(token))
+    
+    getAllUsers : (token) =>  dispatch(actions.getAllUsersRequest(token)),
+    getDetailUser: (token,id) => dispatch(actions.getDetailUserRequest(token,id)),
+
   };
 };
 const UserListContainer = connect(

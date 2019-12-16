@@ -54,6 +54,7 @@ class InsertTag extends PureComponent {
                                     this.name = e.target.value;
                                     this.err = '';
                                   }}
+                                  required
                                 />
                               </div>
 

@@ -2,6 +2,8 @@ import * as constants from '../constants/Actions';
 
 export const initialState = {
   userlist: [],
+  u_taglist: [],
+  u_userinfo: null,
 
 };
 
@@ -12,13 +14,32 @@ function UserReducer(state = initialState, action) {
       const st =  {...state};
       st.userlist = [];
       st.userlist =  action.data.res;
-      console.log("Vô rồi ",st);
+      // window.location.href="/user-list";
+     // console.log("Vô rồi ",st);
+      return st;
+    }
+    case constants.GET_DETAIL: {
+      const st = {...state};
+      // console.log("VÔ nề");
+      st.u_taglist = [];
+      st.u_userinfo = null;
+      try {
+      //  console.log("VÔ nè 2");
+      st.u_taglist = action.data.res.data.tags || [];
+      st.u_userinfo = action.data.res.data.user;
+     //  console.log("VÔ nè 3");
+      }catch(e){
+        console.log(e);
+      }
+      // console.log("Vô nè 4",st);
+      window.location.href="/detail";
+
       return st;
     }
 
-    default:
-
+    default:{
       return state;
+    }
   }
 }
 

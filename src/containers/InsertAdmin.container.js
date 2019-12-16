@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 
-import InsertAdmin from '../components/InsertAdmin';
+import InsertAdmin from '../components/Admin/InsertAdmin';
 
 const mapstToProps = state => {
   return {
