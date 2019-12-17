@@ -59,6 +59,39 @@ export const insertAdminRequest = (body,token)=>{
         });
     });
 };
+
+// Get all tags
+function SendGetAllAdmins(token){
+    const res = axios({
+        method:'GET',
+        url:'https://apimanage.herokuapp.com/alladmins',
+        headers:{Authorization: `Bearer ${token}`},
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const getAllAdmins = (token,res)=>({
+    type: constants.GET_ALL_ADMIN,
+    data: {
+        token,
+        res
+    }
+});
+
+export const getAllAdminsRequest = (token) =>{
+    return (dispatch =>{
+        SendGetAllAdmins(token).then(res=>{
+            console.log("request",res.data);
+            return dispatch(getAllAdmins(token,res.data));
+        });
+    });
+};
+
+
 // Get all tags
 function SendGetAllTags(token){
     const res = axios({

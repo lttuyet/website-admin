@@ -8,10 +8,10 @@ import NavbarContainer from '../../containers/Navbar.container';
 import SidebarContainer from '../../containers/Sidebar.container';
 
 import '../App.css';
-import TagListItem from './TagListItem';
+
 import Footer from '../Footer';
 
-class TagList extends PureComponent {
+class ContractList extends PureComponent {
   constructor() {
     super();
    
@@ -23,8 +23,8 @@ class TagList extends PureComponent {
 
   // eslint-disable-next-line react/no-deprecated
   componentWillMount() {
-    const st = this.props;
-    st.getAllTags(st.token);
+    // const st = this.props;
+    // st.getAllTags(st.token);
   }
 
   handleClick  (id) {
@@ -34,9 +34,9 @@ class TagList extends PureComponent {
     st.getAllTags(st.token);
   }
 
-  renderItem(item,i){
-    return (<TagListItem index = {i} id = {item._id} name = {item.name} onClick={() => this.handleClick(item._id)}/>);
-  }
+//   renderItem(item,i){
+//     return (null);
+//   }
 
 
   render() {
@@ -51,27 +51,27 @@ class TagList extends PureComponent {
     // console .log(st);
 
     if(st.taglist) {
-      const l = st.taglist;
+     // const l = st.taglist;
 
       // console.log(l);
 
-      this.list = l.map((item, i) => this.renderItem(item, i + 1));
+     // this.list = l.map((item, i) => this.renderItem(item, i + 1));
     }
     // console.log("List: ",l);
     return (
       <div id="page-top">
         <div id="wrapper">
           <SidebarContainer />
-          <div  className="d-flex flex-column mb-md-1 w-100">
+          <div className="d-flex flex-column mb-md-1 w-100">
             <div id="content">
               <NavbarContainer />
             </div>
             <div className="mt-md-1">
             <div className=" container">
 
-              <div className="card shadow mb-4 mt-md-2">
+              <div className="card shadow mb-4 mt-md-2 ">
                 <div className="card-header py-3">
-                  <h6 className="m-0 font-weight-bold text-info">DANH SÁCH TAG KỸ NĂNG</h6>
+                  <h6 className="m-0 font-weight-bold text-info">DANH SÁCH HỢP ĐỒNG</h6>
                 </div>
                 <div className="card-body">
                   <div className="table-responsive">
@@ -79,8 +79,8 @@ class TagList extends PureComponent {
                       <thead>
                       <tr>
                         <th>STT</th>
-                        <th>Tên kỹ năng</th>
-                        <th>Thao tác</th>
+                        <th>Người học</th>
+                        <th>Người dạy</th>
 
 
                       </tr>
@@ -88,16 +88,14 @@ class TagList extends PureComponent {
                       <tfoot>
                       <tr>
                         <th>STT</th>
-                        <th>Tên kỹ năng</th>
-                        <th>Thao tác</th>
+                        <th>Người học</th>
+                        <th>Người dạy</th>
 
                       </tr>
                       </tfoot>
                       <tbody>
 
                       {this.list}
-
-
 
                       </tbody>
                     </table>
@@ -119,4 +117,4 @@ class TagList extends PureComponent {
 
 }
 
-export default TagList;
+export default ContractList;

@@ -9,11 +9,11 @@ import SidebarContainer from '../../containers/Sidebar.container';
 
 
 import '../App.css';
-import UserListItem from './UserListItem';
+import AdminListItem from './AdminListItem';
 import Footer from '../Footer';
 // import TagListItem from './TagList/TagListItem';
 
-class UserList extends PureComponent {
+class AdminList extends PureComponent {
 
   // eslint-disable-next-line react/no-deprecated
   componentDidMount() {
@@ -27,13 +27,12 @@ class UserList extends PureComponent {
     
     st.getDetailUser(st.token,id);
     
-
   }
   
 
 
   renderItem(item,i){
-    return (<UserListItem  index={i} id={item._id} name={item.name} address = {item.address} role ={item.role} email ={item.email} onClick={() =>
+    return (<AdminListItem  index={i} id={item._id} name={item.name} address = {item.address} phone ={item.phone} username ={item.username} onClick={() =>
       { 
       // e.preventDefault();
       
@@ -120,4 +119,4 @@ class UserList extends PureComponent {
   }
 }
 
-export default UserList;
+export default AdminList;

@@ -12,7 +12,7 @@ class Navbar extends PureComponent {
       return <Redirect to="/login" />;
     }
     return (
-      <nav className="navbar navbar-expand navbar-dark bg-info topbar static-top shadow">
+      <nav className="navbar navbar-expand navbar-dark bg-dark topbar static-top shadow">
         <button
           id="sidebarToggleTop"
           type="button"

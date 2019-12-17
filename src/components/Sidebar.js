@@ -88,7 +88,7 @@ class Sidebar extends PureComponent {
             data-parent="#accordionSidebar"
           >
             <div className="bg-info py-2 collapse-inner">
-              <a className="collapse-item text-white bg-info" href="/">
+              <a className="collapse-item text-white bg-info" href="/contract-list">
                 Xem danh sách
               </a>
               <a className="collapse-item text-white bg-info" href="/">

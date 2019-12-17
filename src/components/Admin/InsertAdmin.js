@@ -27,7 +27,7 @@ class InsertAdmin extends PureComponent {
       <div id="page-top">
         <div id="wrapper">
           <SidebarContainer />
-          <div id="content-wrapper" className="d-flex flex-column">
+          <div  className="d-flex flex-column mb-md-1 w-100">
             <div id="content">
               <NavbarContainer />
             </div>
