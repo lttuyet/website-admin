@@ -19,10 +19,10 @@ class Dashboard extends PureComponent {
             <div id="content">
               <NavbarContainer />
             </div>
+            <div>
+              <Footer />
+            </div>
           </div>
-        </div>
-        <div >
-          <Footer />
         </div>
       </div>
     );

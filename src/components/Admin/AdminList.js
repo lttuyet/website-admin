@@ -18,14 +18,16 @@ class AdminList extends PureComponent {
   // eslint-disable-next-line react/no-deprecated
   componentDidMount() {
     const st = this.props;
-    st.getAllUsers(st.token);
+    st.getAllAdmins(st.token);
   }
 
   handleClick (id) {
     
     const st = this.props;
     
-    st.getDetailUser(st.token,id);
+    st.deleteAdmin(st.token,id);
+    st.getAllAdmins(st.token);
+  
     
   }
   
@@ -43,16 +45,18 @@ class AdminList extends PureComponent {
 
   render() {
     const st = this.props;
+    // console.log( st.isLogin );
 
-    console.log(st.isLogin);
-    if (!st.isLogin) {
+    if (!st.isLogin ) {
       return <Redirect to="/login" />;
     }
+    if(st.username !== "manager"){
+      return <Redirect to="/" />;
+    }
+    // console .log("Hú hú",st.adminlist);
 
-    // console .log(st);
-
-    if(st.userlist) {
-      const l = st.userlist.users;
+    if(st.adminlist) {
+      const l = st.adminlist;
 
       // console.log("lờ nè",l);
 
@@ -64,16 +68,16 @@ class AdminList extends PureComponent {
       <div id="page-top">
         <div id="wrapper">
           <SidebarContainer />
-          <div  className="d-flex flex-column mb-md-1 w-100">
+          <div  className="d-flex flex-column  w-100">
             <div id="content">
               <NavbarContainer />
             </div>
-            <div className="mt-md-1">
+            <div className="mt-md-1 h-100">
             <div className=" container">
 
           <div className="card shadow mt-md-2">
             <div className="card-header py-3">
-              <h6 className="m-0 font-weight-bold text-info">DANH SÁCH TÀI KHOẢN</h6>
+              <h6 className="m-0 font-weight-bold text-info">DANH SÁCH ADMIN</h6>
             </div>
             <div className="card-body">
               <div className="table-responsive">
@@ -82,8 +86,8 @@ class AdminList extends PureComponent {
                     <tr>
                       <th>No.</th>
                       <th>Tên</th>
-                      <th>Loại</th>
-                      <th>Email</th>
+                      <th>Username</th>
+                      <th>Phone</th>
                       <th>Địa chỉ</th>
                       <th>Thao tác</th>
                       
@@ -93,8 +97,8 @@ class AdminList extends PureComponent {
                     <tr>
                       <th>No.</th>
                       <th>Tên</th>
-                      <th>Loại</th>
-                      <th>Email</th>
+                      <th>Username</th>
+                      <th>Phone</th>
                       <th>Địa chỉ</th>
                       <th>Thao tác</th>
                     </tr>
@@ -108,12 +112,13 @@ class AdminList extends PureComponent {
           </div>
              
             </div>
+            <div>
+              <Footer/>
+            </div>
           </div>
         </div>
         </div>
-        <div >
-          <Footer />
-        </div>
+        
       </div>
     );
   }

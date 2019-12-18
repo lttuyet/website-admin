@@ -62,11 +62,11 @@ class TagList extends PureComponent {
       <div id="page-top">
         <div id="wrapper">
           <SidebarContainer />
-          <div  className="d-flex flex-column mb-md-1 w-100">
+          <div  className="d-flex flex-column  w-100">
             <div id="content">
               <NavbarContainer />
             </div>
-            <div className="mt-md-1">
+            <div className="mt-md-1 h-100">
             <div className=" container">
 
               <div className="card shadow mb-4 mt-md-2">
@@ -107,11 +107,12 @@ class TagList extends PureComponent {
 
             </div>
           </div>
-        </div>
-        </div>
-        <div >
+          <div >
           <Footer />
         </div>
+        </div>
+        </div>
+       
       </div>
     );
   }

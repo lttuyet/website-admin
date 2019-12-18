@@ -53,7 +53,7 @@ class Sidebar extends PureComponent {
                 data-parent="#accordionSidebar"
               >
                 <div className="bg-info py-2 collapse-inner ">
-                  <a className="collapse-item text-white bg-info" href="/">
+                  <a className="collapse-item text-white bg-info" href="/admin-list" onClick={()=>st.getAllAdmins(st.token)}>
                     Xem danh sách
                   </a>
                   <a className="collapse-item text-white bg-info" href="/insert-admin">
@@ -88,7 +88,9 @@ class Sidebar extends PureComponent {
             data-parent="#accordionSidebar"
           >
             <div className="bg-info py-2 collapse-inner">
-              <a className="collapse-item text-white bg-info" href="/contract-list">
+              <a className="collapse-item text-white bg-info" href="/contract-list" onClick={()=>{
+                st.getAllContracts(st.token);
+              }}>
                 Xem danh sách
               </a>
               <a className="collapse-item text-white bg-info" href="/">

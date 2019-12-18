@@ -1,30 +1,31 @@
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
-import UserList from '../components/UserList/UserList';
+import AdminList from '../components/Admin/AdminList';
 
 const mapstToProps = state => {
   return {
     userlist: state.UserReducer.userlist,
-    listAdmin: state.AccountReducer.listAdmin,
+    adminlist: state.AccountReducer.adminlist,
     token: state.AccountReducer.token,
-    isLogin: state.AccountReducer.isLogin
+    isLogin: state.AccountReducer.isLogin,
+    username : state.AccountReducer.username,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     
-    getAllAdmins : (token) =>  dispatch(actions.getAllUsersRequest(token)),
-   
+    getAllAdmins : (token) =>  dispatch(actions.getAllAdminsRequest(token)),
+    deleteAdmin : (token,id) => dispatch(actions.deleteAdminRequest(token,id))
 
   };
 };
-const UserListContainer = connect(
+const AdminListContainer = connect(
   mapstToProps,
   mapDispatchToProps
-)(UserList);
+)(AdminList);
 
-export default UserListContainer;
+export default AdminListContainer;
 
 
 

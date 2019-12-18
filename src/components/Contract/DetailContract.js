@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom';
 import NavbarContainer from '../../containers/Navbar.container';
 import SidebarContainer from '../../containers/Sidebar.container';
 import Footer from '../Footer';
-import img from '../../logo192.png';
+// import img from '../../logo192.png';
 
 import '../App.css';
 
@@ -34,17 +34,10 @@ class Detail extends PureComponent {
                 <div className="card shadow mb-5 mt-md-2 mx-auto " style={{maxWidth : "50rem"}}>
                   <div className="card-header py-3">
                     <h6 className="m-0 font-weight-bold text-info">
-                      THÔNG TIN TÀI KHOẢN
+                      THÔNG TIN HỢP ĐỒNG
                     </h6>
                   </div>
                   <div className="card-body">
-                    <img
-                      src={st.u_userinfo.image || img}
-                      style={{ minWidth: '150px', maxWidth: '150px' }}
-                      className="rounded mx-auto d-block"
-                      alt="..."
-                    />
-                    <hr />
                     <p>
                       <strong>Tên:</strong> {st.u_userinfo.name}
                     </p>

@@ -2,7 +2,7 @@
 import axios from 'axios';
 import * as constants from '../constants/Actions';
 
-
+// ======================================== LOGIN =====================================
 function OnClickLogin(username,password){
     const res = axios.post('https://apimanage.herokuapp.com/admin/login',{
         username,
@@ -29,13 +29,13 @@ export const loginRequest = (username,password)=>{
         });
     });
 };
-
+/* ======================================= ADMIN ========================================== */
 // insert admin
 
 function OnClickInsertAdmin(body,token){
     return axios({
     method:'POST',
-    url:'https://apimanage.herokuapp.com/insertadmin',
+    url:'http://localhost:3001/insertadmin',
     headers:{Authorization: `Bearer ${token}`},
     data: body
     }).catch(err => {
@@ -60,7 +60,7 @@ export const insertAdminRequest = (body,token)=>{
     });
 };
 
-// Get all tags
+// Get all admin
 function SendGetAllAdmins(token){
     const res = axios({
         method:'GET',
@@ -85,12 +85,46 @@ export const getAllAdmins = (token,res)=>({
 export const getAllAdminsRequest = (token) =>{
     return (dispatch =>{
         SendGetAllAdmins(token).then(res=>{
-            console.log("request",res.data);
+            // console.log("request",res.data);
             return dispatch(getAllAdmins(token,res.data));
         });
     });
 };
 
+// delete Admin
+
+function SendDeleteAdmin(token,id){
+    const res = axios({
+        method:'POST',
+        url:'https://apimanage.herokuapp.com/deleteadmin',
+        headers:{Authorization: `Bearer ${token}`},
+        data: {id}
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const deleteAdmin = (token,id,res)=>({
+    type: constants.DELETE_ADMIN,
+    data: {
+        token,
+        id,
+        res
+    }
+});
+
+export const deleteAdminRequest = (token,id) =>{
+    return (dispatch =>{
+        SendDeleteAdmin(token,id).then(res=>{
+
+            return dispatch(deleteAdmin(token,id,res));
+        });
+    });
+};
+/* ========================================= TAG ==================================================== */
 
 // Get all tags
 function SendGetAllTags(token){
@@ -117,7 +151,7 @@ export const getAllTags = (token,res)=>({
 export const getAllTagsRequest = (token) =>{
     return (dispatch =>{
         SendGetAllTags(token).then(res=>{
-            console.log("request",res.data);
+            // console.log("request",res.data);
             return dispatch(getAllTags(token,res.data));
         });
     });
@@ -184,7 +218,7 @@ export const insertTagRequest = (token,name)=>{
         });
     });
 };
-
+// ============================================== USER =======================================================
 // Get all user
 function SendGetAllUsers(token){
     const res = axios({
@@ -210,7 +244,7 @@ export const getAllUsers = (token,res)=>({
 export const getAllUsersRequest = (token) =>{
     return (dispatch =>{
         SendGetAllUsers(token).then(res=>{
-            console.log("request",res.data);
+            // console.log("request",res.data);
             return dispatch(getAllUsers(token,res.data));
         });
     });
@@ -246,12 +280,46 @@ export const getDetailUser = (token,id,res)=>({
 export const getDetailUserRequest = (token,id) =>{
     return (dispatch =>{
         SendGetDetailUser(token,id).then(res=>{
-            console.log("request",res);
+            // console.log("request",res);
             return dispatch(getDetailUser(token,id,res));
         });
     });
 };
+// ===================================== CONTRACT ==========================================
+// get all contract
 
+function SendGetAllContracts(token){
+    const res = axios({
+        method:'GET',
+        url:'https://apimanage.herokuapp.com/allContracts',
+        headers:{Authorization: `Bearer ${token}`},
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const getAllContracts = (token,res)=>({
+    type: constants.GET_ALL_CONTRACT,
+    data: {
+        token,
+        res
+    }
+});
+
+export const getAllContractsRequest = (token) =>{
+    return (dispatch =>{
+        SendGetAllContracts(token).then(res=>{
+            // console.log("request",res.data);
+            return dispatch(getAllContracts(token,res.data));
+        });
+    });
+};
+
+
+// ===================================== LOG OUT ===========================================
 // log out
 
 export const logOut = ()=>({

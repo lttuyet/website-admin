@@ -6,7 +6,7 @@ export const initialState = {
   token: '',
   image: '',
   errorInfo: '',
-  listAdmin: [],
+  adminlist: [],
   isLogin: false
 };
 
@@ -27,7 +27,7 @@ function AccountReducer(state = initialState, action) {
           st.image = action.data.res.data.data.image;
           st.isLogin = true;
           st.errorInfo = '';
-          console.log(st.token);
+          // console.log(st.token);
         }
       } catch (err) {
         st.errorInfo = '';
@@ -38,7 +38,7 @@ function AccountReducer(state = initialState, action) {
     case constants.GET_ALL_ADMIN: {
       const st = {...state};
 
-      st.listAdmin = action.data.res.admins;
+      st.adminlist = action.data.res.admins;
 
       return st;
     }
@@ -54,6 +54,11 @@ function AccountReducer(state = initialState, action) {
       } catch (err) {
         st.errorInfo = 'Đã có lỗi xảy ra';
       }
+      return st;
+    }
+    case constants.DELETE_ADMIN: {
+      const st = { ...state };
+
       return st;
     }
     case constants.LOGOUT: {

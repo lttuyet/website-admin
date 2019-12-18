@@ -9,6 +9,8 @@ const mapstToProps = state => {
     token: state.AccountReducer.token,
     taglist: state.TagReducer.taglist,
     userlist: state.UserReducer.userlist,
+    adminlist: state.AccountReducer.adminlist,
+    contractlist: state.ContractReducer.contractlist,
 
     
   };
@@ -17,7 +19,9 @@ const mapstToProps = state => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getAllTags : (token) => dispatch( actions.getAllTagsRequest(token)),
-    getAllUsers : (token) =>  dispatch(actions.getAllUsersRequest(token))
+    getAllUsers : (token) =>  dispatch(actions.getAllUsersRequest(token)),
+    getAllAdmins : (token) => dispatch(actions.getAllAdminsRequest(token)),
+    getAllContracts: (token) => dispatch(actions.getAllContractsRequest(token))
   };
 };
 const SidebarContainer = connect(

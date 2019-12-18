@@ -25,12 +25,12 @@ class InsertTag extends PureComponent {
       <div id="page-top">
         <div id="wrapper">
           <SidebarContainer />
-          <div className="d-flex flex-column mb-md-1 w-100">
+          <div  className="d-flex flex-column  w-100">
             <div id="content">
               <NavbarContainer />
             </div>
-            <div className="mt-md-1">
-            <div className="container">
+            <div className="mt-md-1 h-100">
+            <div className="container ">
               <div className="row justify-content-center m-md-1">
                 <div className="col-xl-6 col-lg-6">
                   <div className="card o-hidden border-0 shadow-lg my-5">
@@ -86,11 +86,12 @@ class InsertTag extends PureComponent {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div >
+          <div >
           <Footer />
         </div>
+        </div>
+      </div>
+     
       </div>
 
     );
