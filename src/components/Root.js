@@ -10,6 +10,7 @@ import InsertTagContainer from '../containers/InsertTag.container';
 import DetailContainer from '../containers/Detail.container';
 import ContractListContainer from '../containers/ContractList.container';
 import AdminListContainer from '../containers/AdminList.container';
+import DetailContractContainer from '../containers/DetailContract.container';
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -35,6 +36,9 @@ const Root = ({ store }) => (
         </Route>
         <Route path="/contract-list">
           <ContractListContainer/>
+        </Route>
+        <Route path="/detail-contract">
+          <DetailContractContainer/>
         </Route>
         <Route path="/admin-list">
           <AdminListContainer/>

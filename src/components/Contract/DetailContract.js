@@ -11,12 +11,26 @@ import Footer from '../Footer';
 
 import '../App.css';
 
-class Detail extends PureComponent {
+class DetailContract extends PureComponent {
   render() {
     const st = this.props;
 
     if (!st.isLogin) {
       return <Redirect to="/login" />;
+    }
+
+    let style = "";
+    if(st.contract.status === "Đã thanh toán"){
+      style = "text-primary";
+    }else if(st.contract.status === "Chờ xác nhận"){
+      style = "text-warning";
+    }else if(st.contract.status === "Bị từ chối"){
+      style = "text-danger";
+    }else if(st.contract.status === "Bị khiếu nại"){
+      style = "text-danger";
+    }
+    else if(st.contract.status === "Còn thời hạn"){
+      style = "text-success";
     }
 
     // console.log(st);
@@ -39,76 +53,91 @@ class Detail extends PureComponent {
                   </div>
                   <div className="card-body">
                     <p>
-                      <strong>Tên:</strong> {st.u_userinfo.name}
+                      <h7 className="text-info ">THÔNG TIN NGƯỜI DẠY</h7>
+                    </p>
+                    <hr/>
+                    <p>
+                      <strong>Tên Người dạy:</strong> {st.contract.tutor[0].name}
                     </p>
                     <p>
-                      <strong>Địa chỉ:</strong>{' '}
-                      {st.u_userinfo.address || <i>(Rỗng)</i>}
+                      <strong>Email Người dạy:</strong>{' '}
+                      {st.contract.tutor[0].email || <i>(Rỗng)</i>}
                     </p>
                     <p>
-                      <strong>Email:</strong> {st.u_userinfo.email}
+                      <strong>Địa chỉ Người dạy:</strong>{' '}
+                      {st.contract.tutor[0].address || <i>(Rỗng)</i>}
                     </p>
                     <p>
-                      <strong>Loại tài khoản:</strong>{' '}
-                      {st.u_userinfo.role === 'tutor'
-                        ? 'Người dạy'
-                        : 'Người học'}
+                      <strong>Giá theo giờ:</strong>{' '}
+                      {st.contract.tutor[0].price || "Chưa cập nhật"} k VNĐ
+                    </p>
+                    <hr/>
+                    <p>
+                      <h7 className="text-info">THÔNG TIN NGƯỜI HỌC</h7>
+                    </p>
+                    <hr/>
+                    <p>
+                      <strong>Tên Người học:</strong> {st.contract.learner[0].name}
+                    </p>
+                    <p>
+                      <strong>Email Người học:</strong>{' '}
+                      {st.contract.learner[0].email}
+                    </p>
+                    <p>
+                      <strong>Địa chỉ Người học:</strong>{' '}
+                      {st.contract.learner[0].address || <i>(Rỗng)</i>}
                     </p>
                     <hr />
-                    {st.u_userinfo.role === 'tutor' && (
-                      <div>
-                        <p>
-                          <strong>Bài giới thiệu:</strong>{' '}
-                          {st.u_userinfo.intro || <i>(Rỗng)</i>}
-                        </p>
-                        <hr />
+                    <p>
+                      <h7 className="text-info">THÔNG TIN THUÊ</h7>
+                    </p>
+                    <hr/>
+                    <p>
+                      <strong>Số giờ thuê:</strong>{' '}
+                      {st.contract.hours}
+                    </p>
+                   
+                    <p>
+                      <strong>Thời hạn hợp đồng:</strong>{' '}
+                      {st.contract.time}
+                    </p>
+                    <p>
+                      <strong>Ngày bắt đầu:</strong>{' '}
+                      {st.contract.startDate || "Chưa cập nhật"}
+                    </p>
+                    <p>
+                      <strong>Ngày kết thúc:</strong>{' '}
+                      {st.contract.endDate || "Chưa cập nhật"}
+                    </p>
+                    <p>
+                      <strong>Ngày thanh toán:</strong>{' '}
+                      {st.contract.paidDate || "Chưa cập nhật"}
+                    </p>
+                    <hr/>
+                    <p>
+                      <strong>Số tiền thuê:</strong>{' '}
+                      {st.contract.hours * st.contract.tutor[0].price || "Chưa cập nhật"} k VNĐ
+                    </p>
+                    <p >
+                      <strong>Trạng thái hợp đồng:</strong>{' '}
+                      <span className={style}>{st.contract.status}</span>
+                    </p>
+                    <hr/>
+                    
+                    
 
-                        <p>
-                          <strong>Tag kỹ năng:</strong>{' '}
-                          {st.u_taglist.length !== 0 ? (
-                            st.u_taglist.map(item => (
-                              <span className="badge badge-warning ml-md-1">
-                                {item.name}
-                              </span>
-                            ))
-                          ) : (
-                            <i>(Rỗng)</i>
-                          )}
-                        </p>
-                        <hr />
-
-                        <p>
-                          <strong>Giá theo giờ:</strong>{' '}
-                          {st.u_userinfo.price || <i>(Rỗng)</i>}
-                        </p>
-                        <hr />
-                      </div>
-                    )}
+                    
                     <div className="float-right" >
                       <button
                         className="btn btn-info"
                         type="button"
                         onClick={() => {
-                          window.location.href = '/user-list';
+                          window.location.href = '/contract-list';
                         }}
                       >
                         Quay về trang danh sách
                       </button>
-                      {st.u_userinfo.isDeleted === true ? (
-                        <button
-                          className="btn btn-success ml-md-2"
-                          type="button"
-                        >
-                          Bỏ chặn
-                        </button>
-                      ) : (
-                        <button
-                          className="btn btn-danger ml-md-2"
-                          type="button"
-                        >
-                          Chặn
-                        </button>
-                      )}
+                      
                     </div>
                   </div>
                 </div>
@@ -125,4 +154,4 @@ class Detail extends PureComponent {
   }
 }
 
-export default Detail;
+export default DetailContract;

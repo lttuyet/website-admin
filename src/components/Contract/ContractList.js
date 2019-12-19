@@ -25,11 +25,11 @@ class ContractList extends PureComponent {
     st.getAllContracts(st.token);
   }
 
-  handleClick() {
+  handleClick(id) {
     // console.log("Vào đây r");
     const st = this.props;
 
-    st.getAllContracts(st.token);
+    st.getDetailContract(st.token,id);
   }
 
   renderItem(item, i) {

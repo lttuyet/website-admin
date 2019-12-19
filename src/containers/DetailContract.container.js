@@ -1,30 +1,29 @@
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
-import ContractList from '../components/Contract/ContractList';
+import DetailContract from '../components/Contract/DetailContract';
 
 const mapstToProps = state => {
   return {
-    contractlist: state.ContractReducer.contractlist,
-    token: state.AccountReducer.token,
     isLogin: state.AccountReducer.isLogin,
     contract: state.ContractReducer.contract,
+    token: state.AccountReducer.token,
+    
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAllContracts: (token) => dispatch(actions.getAllContractsRequest(token)),
     getDetailContract: (token,id) => dispatch(actions.getDetailContractRequest(token,id)),
     
 
   };
 };
-const ContractListContainer = connect(
+const DetailContractContainer = connect(
   mapstToProps,
   mapDispatchToProps
-)(ContractList);
+)(DetailContract);
 
-export default ContractListContainer;
+export default DetailContractContainer;
 
 
 

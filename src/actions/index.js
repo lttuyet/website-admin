@@ -393,6 +393,42 @@ export const getAllContractsRequest = (token) =>{
     });
 };
 
+// get detail contract
+
+function SendGetDetailContract(token,id){
+    const res = axios({
+        method:'POST',
+        url:'https://apimanage.herokuapp.com/detailscontract',
+        headers:{Authorization: `Bearer ${token}`},
+        data: {
+            id
+        }
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const getDetailContract = (token,id,res)=>({
+    type: constants.GET_DETAIL_CONTRACT,
+    data: {
+        token,
+        id,
+        res
+    }
+});
+
+export const getDetailContractRequest = (token,id) =>{
+    return (dispatch =>{
+        SendGetDetailContract(token,id).then(res=>{
+            // console.log("request",res);
+            return dispatch(getDetailContract(token,id,res));
+        });
+    });
+};
+
 
 // ===================================== LOG OUT ===========================================
 // log out
