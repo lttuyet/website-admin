@@ -12,16 +12,26 @@ import img from '../../logo192.png';
 import '../App.css';
 
 class Detail extends PureComponent {
+
+  // componentDidMount() {
+  //   const st = this.props;
+  //   st.getDetailUser(st.token,st.u_userinfo._id);
+  // }
+  
+
+  
   render() {
     const st = this.props;
 
     if (!st.isLogin) {
       return <Redirect to="/login" />;
     }
+    
 
-    // console.log(st);
+    console.log(st);
 
     return (
+      
       <div id="page-top">
         <div id="wrapper">
           <SidebarContainer />
@@ -101,10 +111,15 @@ class Detail extends PureComponent {
                       >
                         Quay về trang danh sách
                       </button>
-                      {st.u_userinfo.isDeleted === true ? (
+                      {st.u_userinfo.isblocked ? (
                         <button
                           className="btn btn-success ml-md-2"
                           type="button"
+                          onClick={ async ()=>{ await st.unblockUser(st.token,st.u_userinfo._id);
+                            // window.location.href = '/detail';
+                            st.getDetailUser(st.token,st.u_userinfo._id);
+                            // console.log(st);
+                            }}
                         >
                           Bỏ chặn
                         </button>
@@ -112,6 +127,13 @@ class Detail extends PureComponent {
                         <button
                           className="btn btn-danger ml-md-2"
                           type="button"
+                          onClick={ async () =>{
+                            await st.blockUser(st.token,st.u_userinfo._id);
+                            // window.location.href = '/detail';
+                            st.getDetailUser(st.token,st.u_userinfo._id);
+                            // console.log(st);
+                            
+                            }}
                         >
                           Chặn
                         </button>

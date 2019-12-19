@@ -37,6 +37,22 @@ function UserReducer(state = initialState, action) {
       return st;
     }
 
+    case constants.BLOCK_USER:{
+      const st = {...state};
+
+      st.u_userinfo.isblocked = true;
+      
+      return st;
+    }
+
+    case constants.UNBLOCK_USER:{
+      const st = {...state};
+      
+      st.u_userinfo.isblocked = false;
+
+      return st;
+    }
+
     default:{
       return state;
     }

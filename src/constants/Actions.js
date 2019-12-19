@@ -9,3 +9,5 @@ export  const DELETE_TAG = 'DELETE_TAG';
 export  const DELETE_ADMIN = 'DELETE_ADMIN';
 export const INSERT_TAG = 'INSERT_TAG';
 export const GET_DETAIL = 'GET_DETAIL';
+export const BLOCK_USER = 'BLOCK_USER';
+export const UNBLOCK_USER = 'UNBLOCK_USER';

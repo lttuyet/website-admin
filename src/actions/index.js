@@ -285,6 +285,81 @@ export const getDetailUserRequest = (token,id) =>{
         });
     });
 };
+
+// block user
+
+function SendBlockUser(token,id){
+    const res = axios({
+        method:'POST',
+        url:'http://localhost:3001/blockuser',
+        headers:{Authorization: `Bearer ${token}`},
+        data: {
+            id
+        }
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const blockUser = (token,id,res)=>({
+    type: constants.BLOCK_USER,
+    data: {
+        token,
+        id,
+        res
+    }
+});
+
+export const blockUserRequest = (token,id) =>{
+    return (dispatch =>{
+        SendBlockUser(token,id).then(res=>{
+            // console.log("request",res);
+            return dispatch(blockUser(token,id,res));
+        });
+    });
+};
+
+// unblock user
+
+function SendUnblockUser(token,id){
+    const res = axios({
+        method:'POST',
+        url:'http://localhost:3001/unblockuser',
+        headers:{Authorization: `Bearer ${token}`},
+        data: {
+            id
+        }
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const unblockUser = (token,id,res)=>({
+    type: constants.UNBLOCK_USER,
+    data: {
+        token,
+        id,
+        res
+    }
+});
+
+export const unblockUserRequest = (token,id) =>{
+    return (dispatch =>{
+        SendUnblockUser(token,id).then(res=>{
+            // console.log("request",res);
+            return dispatch(unblockUser(token,id,res));
+        });
+    });
+};
+
+
+
 // ===================================== CONTRACT ==========================================
 // get all contract
 
