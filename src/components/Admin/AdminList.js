@@ -112,10 +112,11 @@ class AdminList extends PureComponent {
           </div>
              
             </div>
-            <div>
+            
+          </div>
+          <div>
               <Footer/>
             </div>
-          </div>
         </div>
         </div>
         

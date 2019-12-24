@@ -23,7 +23,7 @@ class Sidebar extends PureComponent {
         <hr className="sidebar-divider my-0" />
 
         <li className="nav-item active">
-          <a className="nav-link" href="index.html">
+          <a className="nav-link" href="/top-list-by-income" onClick={()=>{st.getTopUsers(st.token);}}>
             <i className="fas fa-fw fa-tachometer-alt" />
             <span>Dashboard</span>
           </a>

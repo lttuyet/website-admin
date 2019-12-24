@@ -14,11 +14,9 @@ import Footer from '../Footer';
 class TagList extends PureComponent {
   constructor() {
     super();
-   
+
     this.err = '';
     this.list = [];
-
-
   }
 
   // eslint-disable-next-line react/no-deprecated
@@ -27,17 +25,23 @@ class TagList extends PureComponent {
     st.getAllTags(st.token);
   }
 
-  handleClick  (id) {
+  handleClick(id) {
     // console.log("Vào đây r");
     const st = this.props;
-    st.deleteTag(st.token,id);
+    st.deleteTag(st.token, id);
     st.getAllTags(st.token);
   }
 
-  renderItem(item,i){
-    return (<TagListItem index = {i} id = {item._id} name = {item.name} onClick={() => this.handleClick(item._id)}/>);
+  renderItem(item, i) {
+    return (
+      <TagListItem
+        index={i}
+        id={item._id}
+        name={item.name}
+        onClick={() => this.handleClick(item._id)}
+      />
+    );
   }
-
 
   render() {
     const st = this.props;
@@ -46,11 +50,11 @@ class TagList extends PureComponent {
     // st.getAllTags(st.token);
 
     if (!st.isLogin) {
-      return <Redirect to="/login"/>;
+      return <Redirect to="/login" />;
     }
     // console .log(st);
 
-    if(st.taglist) {
+    if (st.taglist) {
       const l = st.taglist;
 
       // console.log(l);
@@ -62,62 +66,55 @@ class TagList extends PureComponent {
       <div id="page-top">
         <div id="wrapper">
           <SidebarContainer />
-          <div  className="d-flex flex-column  w-100">
+          <div className="d-flex flex-column  w-100">
             <div id="content">
               <NavbarContainer />
             </div>
             <div className="mt-md-1 h-100">
-            <div className=" container">
-
-              <div className="card shadow mb-4 mt-md-2">
-                <div className="card-header py-3">
-                  <h6 className="m-0 font-weight-bold text-info">DANH SÁCH TAG KỸ NĂNG</h6>
-                </div>
-                <div className="card-body">
-                  <div className="table-responsive">
-                    <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
-                      <thead>
-                      <tr>
-                        <th>STT</th>
-                        <th>Tên kỹ năng</th>
-                        <th>Thao tác</th>
-
-
-                      </tr>
-                      </thead>
-                      <tfoot>
-                      <tr>
-                        <th>STT</th>
-                        <th>Tên kỹ năng</th>
-                        <th>Thao tác</th>
-
-                      </tr>
-                      </tfoot>
-                      <tbody>
-
-                      {this.list}
-
-
-
-                      </tbody>
-                    </table>
+              <div className=" container">
+                <div className="card shadow mb-4 mt-md-2">
+                  <div className="card-header py-3">
+                    <h6 className="m-0 font-weight-bold text-info">
+                      DANH SÁCH TAG KỸ NĂNG
+                    </h6>
+                  </div>
+                  <div className="card-body">
+                    <div className="table-responsive">
+                      <table
+                        className="table table-bordered"
+                        id="dataTable"
+                        width="100%"
+                        cellSpacing="0"
+                      >
+                        <thead>
+                          <tr>
+                            <th>STT</th>
+                            <th>Tên kỹ năng</th>
+                            <th>Thao tác</th>
+                          </tr>
+                        </thead>
+                        <tfoot>
+                          <tr>
+                            <th>STT</th>
+                            <th>Tên kỹ năng</th>
+                            <th>Thao tác</th>
+                          </tr>
+                        </tfoot>
+                        <tbody>{this.list}</tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
-
+            </div>
+            <div>
+              <Footer />
             </div>
           </div>
-          <div >
-          <Footer />
         </div>
-        </div>
-        </div>
-       
       </div>
     );
   }
-
-
 }
 
 export default TagList;

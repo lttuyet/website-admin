@@ -358,6 +358,67 @@ export const unblockUserRequest = (token,id) =>{
     });
 };
 
+// Get top 10 user
+function SendGetTopUsers(token){
+    const res = axios({
+        method:'GET',
+        url:'http://localhost:3001/top10byincome',
+        headers:{Authorization: `Bearer ${token}`},
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const getTopUsers = (token,res)=>({
+    type: constants.GET_TOP_BY_INCOME,
+    data: {
+        token,
+        res
+    }
+});
+
+export const getTopUsersRequest = (token) =>{
+    return (dispatch =>{
+        SendGetTopUsers(token).then(res=>{
+            // console.log("request",res.data);
+            return dispatch(getTopUsers(token,res.data));
+        });
+    });
+};
+
+// Get top 10 user by day
+function SendGetTopUsersDay(token){
+    const res = axios({
+        method:'GET',
+        url:'http://localhost:3001/top10byincomeday',
+        headers:{Authorization: `Bearer ${token}`},
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const getTopUsersDay = (token,res)=>({
+    type: constants.GET_TOP_BY_INCOME_DAY,
+    data: {
+        token,
+        res
+    }
+});
+
+export const getTopUsersDayRequest = (token) =>{
+    return (dispatch =>{
+        SendGetTopUsersDay(token).then(res=>{
+            // console.log("request",res.data);
+            return dispatch(getTopUsersDay(token,res.data));
+        });
+    });
+};
 
 
 // ===================================== CONTRACT ==========================================

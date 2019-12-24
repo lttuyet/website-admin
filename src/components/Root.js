@@ -2,7 +2,7 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginContainer from '../containers/Login.container';
-import DashboardContainer from '../containers/Dashboard.container';
+// import DashboardContainer from '../containers/Dashboard.container';
 import InsertAdminContainer from '../containers/InsertAdmin.container';
 import UserListContainer from '../containers/UserList.container';
 import TagListContainer from '../containers/TagList.container';
@@ -11,6 +11,7 @@ import DetailContainer from '../containers/Detail.container';
 import ContractListContainer from '../containers/ContractList.container';
 import AdminListContainer from '../containers/AdminList.container';
 import DetailContractContainer from '../containers/DetailContract.container';
+import TopListByIncomeContainer from '../containers/TopListByIncome.container';
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -28,6 +29,9 @@ const Root = ({ store }) => (
         <Route path="/user-list">
           <UserListContainer />
         </Route>
+        <Route path="/top-list-by-income">
+          <TopListByIncomeContainer/>
+        </Route>
         <Route path="/tag-list">
           <TagListContainer/>
         </Route>
@@ -43,8 +47,9 @@ const Root = ({ store }) => (
         <Route path="/admin-list">
           <AdminListContainer/>
         </Route>
+        
         <Route path="/">
-          <DashboardContainer />
+          <TopListByIncomeContainer/>
         </Route>
       </Switch>
     </Router>
