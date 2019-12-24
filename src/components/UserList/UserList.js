@@ -109,10 +109,11 @@ class UserList extends PureComponent {
           </div>
              
             </div>
-            <div >
+            
+          </div>
+          <div >
           <Footer />
         </div>
-          </div>
         </div>
         </div>
      

@@ -13,7 +13,11 @@ function UserReducer(state = initialState, action) {
     case constants.GET_ALL_USER: {
       const st =  {...state};
       st.userlist = [];
+      try{
       st.userlist =  action.data.res;
+      }catch(e){
+        console.log(e);
+      }
       // window.location.href="/user-list";
      // console.log("Vô rồi ",st);
       return st;
