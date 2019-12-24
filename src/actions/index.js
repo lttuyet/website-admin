@@ -35,7 +35,7 @@ export const loginRequest = (username,password)=>{
 function OnClickInsertAdmin(body,token){
     return axios({
     method:'POST',
-    url:'http://localhost:3001/insertadmin',
+    url:'https://apimanage.herokuapp.com/insertadmin',
     headers:{Authorization: `Bearer ${token}`},
     data: body
     }).catch(err => {
@@ -291,7 +291,7 @@ export const getDetailUserRequest = (token,id) =>{
 function SendBlockUser(token,id){
     const res = axios({
         method:'POST',
-        url:'http://localhost:3001/blockuser',
+        url:'https://apimanage.herokuapp.com/blockuser',
         headers:{Authorization: `Bearer ${token}`},
         data: {
             id
@@ -327,7 +327,7 @@ export const blockUserRequest = (token,id) =>{
 function SendUnblockUser(token,id){
     const res = axios({
         method:'POST',
-        url:'http://localhost:3001/unblockuser',
+        url:'https://apimanage.herokuapp.com/unblockuser',
         headers:{Authorization: `Bearer ${token}`},
         data: {
             id
