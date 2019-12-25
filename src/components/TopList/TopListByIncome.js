@@ -52,20 +52,22 @@ class TopListByIncome extends PureComponent {
     // console .log(st);
 
     let l = [];
+    const _label = [];
+    const _money = [];
     if (st.toplist) {
       l = st.toplist;
 
       console.log('lờ nè', l);
 
       this.list = l.toplist.map((item, i) => this.renderItem(item, i + 1));
+      l.toplist.map((item) => {_label.push(item.name[0]);});
+      l.toplist.map((item) => {_money.push(item.total);});
     }
     // const listT = ["Tiếng Anh","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React"];
 
 
-    const _label = [];
-    const _money = [];
-    l.toplist.map((item) => {_label.push(item.name[0]);});
-    l.toplist.map((item) => {_money.push(item.total);});
+    
+   
     
     const data = {
       labels: _label,
@@ -134,8 +136,61 @@ class TopListByIncome extends PureComponent {
     this.titleCH = "BIỂU ĐỒ THU NHẬP TOP GIA SƯ";}}>Tất Cả</button>
                 <button type="button" className="btn btn-info m-md-2" onClick={()=>{st.getTopUsersDay(st.token); this.titleTB = "TOP THU NHẬP CỦA GIA SƯ THEO NGÀY";
     this.titleCH = "BIỂU ĐỒ THU NHẬP TOP GIA SƯ THEO NGÀY"; ;}}>Theo Ngày</button>
-                <button type="button" className="btn btn-info m-md-2">Theo Tuần</button>
-                <button type="button" className="btn btn-info m-md-2">Theo Tháng</button>
+    <button type="button" className="btn btn-info m-md-2" onClick={()=>{st.getTopUsersWeek(st.token); this.titleTB = "TOP THU NHẬP CỦA GIA SƯ THEO TUẦN";
+    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP GIA SƯ THEO TUẦN"; ;}}>Theo Tuần</button>
+                <button type="button" className="btn btn-info m-md-2" onClick={()=>{st.getTopUsersMonth(st.token); this.titleTB = "TOP THU NHẬP CỦA GIA SƯ THEO THÁNG";
+    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP GIA SƯ THEO THÁNG"; ;}}>Theo Tháng</button>
+                <button type="button" className="btn btn-info m-md-2" onClick={()=>{st.getTopUsersYear(st.token); this.titleTB = "TOP THU NHẬP CỦA GIA SƯ THEO NĂM";
+    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP GIA SƯ THEO NĂM"; ;}}>Theo Năm</button>
+                
+                </div>
+                
+                <hr/>
+                <div className="row">
+                  <div className="col-5">
+                    <div className="card shadow mt-md-2">
+                      <div className="card-header py-3">
+                        <h6 className="m-0 font-weight-bold text-info">
+                        {this.titleTB}
+                        </h6>
+                      </div>
+                      <div className="card-body">
+                        <div className="table-responsive">
+                          <table className="table" width="100%" cellSpacing="0">
+                            <tbody>{this.list}</tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-7">
+                    <div className="card shadow mt-md-2">
+                      <div className="card-header py-3">
+                        <h6 className="m-0 font-weight-bold text-info">
+                          {this.titleCH}
+                        </h6>
+                      </div>
+                      <div className="card-body" style={{height:"550px"}}>
+                        <Bar
+                          data={data}
+                          height={230}
+                          options={{ }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="d-block-inline mx-auto m-md-2">
+                <button type="button" className="btn btn-success m-md-2" onClick={()=>{st.getTopUsers(st.token); this.titleTB = "TOP THU NHẬP CỦA GIA SƯ";
+    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP GIA SƯ";}}>Tất Cả</button>
+                <button type="button" className="btn btn-info m-md-2" onClick={()=>{st.getTopUsersDay(st.token); this.titleTB = "TOP THU NHẬP CỦA GIA SƯ THEO NGÀY";
+    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP GIA SƯ THEO NGÀY"; ;}}>Theo Ngày</button>
+    <button type="button" className="btn btn-info m-md-2" onClick={()=>{st.getTopUsersWeek(st.token); this.titleTB = "TOP THU NHẬP CỦA GIA SƯ THEO TUẦN";
+    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP GIA SƯ THEO TUẦN"; ;}}>Theo Tuần</button>
+                <button type="button" className="btn btn-info m-md-2" onClick={()=>{st.getTopUsersMonth(st.token); this.titleTB = "TOP THU NHẬP CỦA GIA SƯ THEO THÁNG";
+    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP GIA SƯ THEO THÁNG"; ;}}>Theo Tháng</button>
+                <button type="button" className="btn btn-info m-md-2" onClick={()=>{st.getTopUsersYear(st.token); this.titleTB = "TOP THU NHẬP CỦA GIA SƯ THEO NĂM";
+    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP GIA SƯ THEO NĂM"; ;}}>Theo Năm</button>
                 
                 </div>
                 

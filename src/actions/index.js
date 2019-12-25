@@ -420,6 +420,99 @@ export const getTopUsersDayRequest = (token) =>{
     });
 };
 
+// Get top 5 user by month
+function SendGetTopUsersMonth(token){
+    const res = axios({
+        method:'GET',
+        url:'http://localhost:3001/top10byincomemonth',
+        headers:{Authorization: `Bearer ${token}`},
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const getTopUsersMonth = (token,res)=>({
+    type: constants.GET_TOP_BY_INCOME_MONTH,
+    data: {
+        token,
+        res
+    }
+});
+
+export const getTopUsersMonthRequest = (token) =>{
+    return (dispatch =>{
+        SendGetTopUsersMonth(token).then(res=>{
+            // console.log("request",res.data);
+            return dispatch(getTopUsersMonth(token,res.data));
+        });
+    });
+};
+
+// Get top 5 user by year
+function SendGetTopUsersYear(token){
+    const res = axios({
+        method:'GET',
+        url:'http://localhost:3001/top10byincomeyear',
+        headers:{Authorization: `Bearer ${token}`},
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const getTopUsersYear = (token,res)=>({
+    type: constants.GET_TOP_BY_INCOME_YEAR,
+    data: {
+        token,
+        res
+    }
+});
+
+export const getTopUsersYearRequest = (token) =>{
+    return (dispatch =>{
+        SendGetTopUsersYear(token).then(res=>{
+            // console.log("request",res.data);
+            return dispatch(getTopUsersYear(token,res.data));
+        });
+    });
+};
+
+
+// Get top 5 user by year
+function SendGetTopUsersWeek(token){
+    const res = axios({
+        method:'GET',
+        url:'http://localhost:3001/top10byincomeweek',
+        headers:{Authorization: `Bearer ${token}`},
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const getTopUsersWeek = (token,res)=>({
+    type: constants.GET_TOP_BY_INCOME_WEEK,
+    data: {
+        token,
+        res
+    }
+});
+
+export const getTopUsersWeekRequest = (token) =>{
+    return (dispatch =>{
+        SendGetTopUsersWeek(token).then(res=>{
+            // console.log("request",res.data);
+            return dispatch(getTopUsersWeek(token,res.data));
+        });
+    });
+};
 
 // ===================================== CONTRACT ==========================================
 // get all contract
