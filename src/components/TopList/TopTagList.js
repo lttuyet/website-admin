@@ -27,7 +27,9 @@ class TopTagList extends PureComponent {
 
   componentDidMount() {
     const st = this.props;
+    
     st.getTopTags(st.token);
+    st.getTopUsers(st.token);
     console.log(st);
   }
 

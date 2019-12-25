@@ -4,7 +4,7 @@ import * as constants from '../constants/Actions';
 
 // ======================================== LOGIN =====================================
 function OnClickLogin(username,password){
-    const res = axios.post('https://apimanage.herokuapp.com/admin/login',{
+    const res = axios.post('http://apimanage.herokuapp.com/admin/login',{
         username,
         password
     }).catch(err => {
@@ -35,7 +35,7 @@ export const loginRequest = (username,password)=>{
 function OnClickInsertAdmin(body,token){
     return axios({
     method:'POST',
-    url:'https://apimanage.herokuapp.com/insertadmin',
+    url:'http://apimanage.herokuapp.com/insertadmin',
     headers:{Authorization: `Bearer ${token}`},
     data: body
     }).catch(err => {
@@ -64,7 +64,7 @@ export const insertAdminRequest = (body,token)=>{
 function SendGetAllAdmins(token){
     const res = axios({
         method:'GET',
-        url:'https://apimanage.herokuapp.com/alladmins',
+        url:'http://apimanage.herokuapp.com/alladmins',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -96,7 +96,7 @@ export const getAllAdminsRequest = (token) =>{
 function SendDeleteAdmin(token,id){
     const res = axios({
         method:'POST',
-        url:'https://apimanage.herokuapp.com/deleteadmin',
+        url:'http://apimanage.herokuapp.com/deleteadmin',
         headers:{Authorization: `Bearer ${token}`},
         data: {id}
     }).catch(err => {
@@ -130,7 +130,7 @@ export const deleteAdminRequest = (token,id) =>{
 function SendGetAllTags(token){
     const res = axios({
         method:'GET',
-        url:'https://apimanage.herokuapp.com/alltags',
+        url:'http://apimanage.herokuapp.com/alltags',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -162,7 +162,7 @@ export const getAllTagsRequest = (token) =>{
 function SendDeleteTag(token,id){
     const res = axios({
         method:'POST',
-        url:'https://apimanage.herokuapp.com/deletetag',
+        url:'http://apimanage.herokuapp.com/deletetag',
         headers:{Authorization: `Bearer ${token}`},
         data: {id}
     }).catch(err => {
@@ -194,7 +194,7 @@ export const deleteTagRequest = (token,id) =>{
 function OnClickInsertTag(token,name){
     return axios({
         method:'POST',
-        url:'https://apimanage.herokuapp.com/inserttag',
+        url:'http://apimanage.herokuapp.com/inserttag',
         headers:{Authorization: `Bearer ${token}`},
         data: {name}
     }).catch(err => {
@@ -223,7 +223,7 @@ export const insertTagRequest = (token,name)=>{
 function SendGetTopTags(token){
     const res = axios({
         method:'GET',
-        url:'https://apimanage.herokuapp.com/top10incomebytag',
+        url:'http://apimanage.herokuapp.com/top10incomebytag',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -254,7 +254,7 @@ export const getTopTagsRequest = (token) =>{
 function SendGetTopTagsDay(token){
     const res = axios({
         method:'GET',
-        url:'https://apimanage.herokuapp.com/top10incomebytagbyday',
+        url:'http://apimanage.herokuapp.com/top10incomebytagbyday',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -285,7 +285,7 @@ export const getTopTagsDayRequest = (token) =>{
 function SendGetTopTagsMonth(token){
     const res = axios({
         method:'GET',
-        url:'https://apimanage.herokuapp.com/top10incomebytagbymonth',
+        url:'http://apimanage.herokuapp.com/top10incomebytagbymonth',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -316,7 +316,7 @@ export const getTopTagsMonthRequest = (token) =>{
 function SendGetTopTagsYear(token){
     const res = axios({
         method:'GET',
-        url:'https://apimanage.herokuapp.com/top10incomebytagbyyear',
+        url:'http://apimanage.herokuapp.com/top10incomebytagbyyear',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -348,7 +348,7 @@ export const getTopTagsYearRequest = (token) =>{
 function SendGetTopTagsWeek(token){
     const res = axios({
         method:'GET',
-        url:'https://apimanage.herokuapp.com/top10incomebytagbyweek',
+        url:'http://apimanage.herokuapp.com/top10incomebytagbyweek',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -384,7 +384,7 @@ export const getTopTagsWeekRequest = (token) =>{
 function SendGetAllUsers(token){
     const res = axios({
         method:'GET',
-        url:'https://apimanage.herokuapp.com/allusers',
+        url:'http://apimanage.herokuapp.com/allusers',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -416,7 +416,7 @@ export const getAllUsersRequest = (token) =>{
 function SendGetDetailUser(token,id){
     const res = axios({
         method:'POST',
-        url:'https://apimanage.herokuapp.com/detailsuser',
+        url:'http://apimanage.herokuapp.com/detailsuser',
         headers:{Authorization: `Bearer ${token}`},
         data: {
             id
@@ -452,7 +452,7 @@ export const getDetailUserRequest = (token,id) =>{
 function SendBlockUser(token,id){
     const res = axios({
         method:'POST',
-        url:'https://apimanage.herokuapp.com/blockuser',
+        url:'http://apimanage.herokuapp.com/blockuser',
         headers:{Authorization: `Bearer ${token}`},
         data: {
             id
@@ -488,7 +488,7 @@ export const blockUserRequest = (token,id) =>{
 function SendUnblockUser(token,id){
     const res = axios({
         method:'POST',
-        url:'https://apimanage.herokuapp.com/unblockuser',
+        url:'http://apimanage.herokuapp.com/unblockuser',
         headers:{Authorization: `Bearer ${token}`},
         data: {
             id
@@ -523,7 +523,7 @@ export const unblockUserRequest = (token,id) =>{
 function SendGetTopUsers(token){
     const res = axios({
         method:'GET',
-        url:'https://apimanage.herokuapp.com/top10byincome',
+        url:'http://apimanage.herokuapp.com/top10byincome',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -554,7 +554,7 @@ export const getTopUsersRequest = (token) =>{
 function SendGetTopUsersDay(token){
     const res = axios({
         method:'GET',
-        url:'https://apimanage.herokuapp.com/top10byincomeday',
+        url:'http://apimanage.herokuapp.com/top10byincomeday',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -585,7 +585,7 @@ export const getTopUsersDayRequest = (token) =>{
 function SendGetTopUsersMonth(token){
     const res = axios({
         method:'GET',
-        url:'https://apimanage.herokuapp.com/top10byincomemonth',
+        url:'http://apimanage.herokuapp.com/top10byincomemonth',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -616,7 +616,7 @@ export const getTopUsersMonthRequest = (token) =>{
 function SendGetTopUsersYear(token){
     const res = axios({
         method:'GET',
-        url:'https://apimanage.herokuapp.com/top10byincomeyear',
+        url:'http://apimanage.herokuapp.com/top10byincomeyear',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -648,7 +648,7 @@ export const getTopUsersYearRequest = (token) =>{
 function SendGetTopUsersWeek(token){
     const res = axios({
         method:'GET',
-        url:'https://apimanage.herokuapp.com/top10byincomeweek',
+        url:'http://apimanage.herokuapp.com/top10byincomeweek',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -681,7 +681,7 @@ export const getTopUsersWeekRequest = (token) =>{
 function SendGetAllContracts(token){
     const res = axios({
         method:'GET',
-        url:'https://apimanage.herokuapp.com/allContracts',
+        url:'http://apimanage.herokuapp.com/allContracts',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -713,7 +713,7 @@ export const getAllContractsRequest = (token) =>{
 function SendGetDetailContract(token,id){
     const res = axios({
         method:'POST',
-        url:'https://apimanage.herokuapp.com/detailscontract',
+        url:'http://apimanage.herokuapp.com/detailscontract',
         headers:{Authorization: `Bearer ${token}`},
         data: {
             id

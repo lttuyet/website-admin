@@ -28,6 +28,7 @@ class TopListByIncome extends PureComponent {
   componentDidMount() {
     const st = this.props;
     st.getTopUsers(st.token);
+    st.getTopTags(st.token);
   }
 
   renderItem(item, i) {
