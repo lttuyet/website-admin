@@ -35,7 +35,7 @@ export const loginRequest = (username,password)=>{
 function OnClickInsertAdmin(body,token){
     return axios({
     method:'POST',
-    url:'http://localhost:3001/insertadmin',
+    url:'https://apimanage.herokuapp.com/insertadmin',
     headers:{Authorization: `Bearer ${token}`},
     data: body
     }).catch(err => {
@@ -223,7 +223,7 @@ export const insertTagRequest = (token,name)=>{
 function SendGetTopTags(token){
     const res = axios({
         method:'GET',
-        url:'http://localhost:3001/top10incomebytag',
+        url:'https://apimanage.herokuapp.com/top10incomebytag',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -254,7 +254,7 @@ export const getTopTagsRequest = (token) =>{
 function SendGetTopTagsDay(token){
     const res = axios({
         method:'GET',
-        url:'http://localhost:3001/top10incomebytagbyday',
+        url:'https://apimanage.herokuapp.com/top10incomebytagbyday',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -285,7 +285,7 @@ export const getTopTagsDayRequest = (token) =>{
 function SendGetTopTagsMonth(token){
     const res = axios({
         method:'GET',
-        url:'http://localhost:3001/top10incomebytagbymonth',
+        url:'https://apimanage.herokuapp.com/top10incomebytagbymonth',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -316,7 +316,7 @@ export const getTopTagsMonthRequest = (token) =>{
 function SendGetTopTagsYear(token){
     const res = axios({
         method:'GET',
-        url:'http://localhost:3001/top10incomebytagbyyear',
+        url:'https://apimanage.herokuapp.com/top10incomebytagbyyear',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -348,7 +348,7 @@ export const getTopTagsYearRequest = (token) =>{
 function SendGetTopTagsWeek(token){
     const res = axios({
         method:'GET',
-        url:'http://localhost:3001/top10incomebytagbyweek',
+        url:'https://apimanage.herokuapp.com/top10incomebytagbyweek',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -452,7 +452,7 @@ export const getDetailUserRequest = (token,id) =>{
 function SendBlockUser(token,id){
     const res = axios({
         method:'POST',
-        url:'http://localhost:3001/blockuser',
+        url:'https://apimanage.herokuapp.com/blockuser',
         headers:{Authorization: `Bearer ${token}`},
         data: {
             id
@@ -488,7 +488,7 @@ export const blockUserRequest = (token,id) =>{
 function SendUnblockUser(token,id){
     const res = axios({
         method:'POST',
-        url:'http://localhost:3001/unblockuser',
+        url:'https://apimanage.herokuapp.com/unblockuser',
         headers:{Authorization: `Bearer ${token}`},
         data: {
             id
@@ -523,7 +523,7 @@ export const unblockUserRequest = (token,id) =>{
 function SendGetTopUsers(token){
     const res = axios({
         method:'GET',
-        url:'http://localhost:3001/top10byincome',
+        url:'https://apimanage.herokuapp.com/top10byincome',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -554,7 +554,7 @@ export const getTopUsersRequest = (token) =>{
 function SendGetTopUsersDay(token){
     const res = axios({
         method:'GET',
-        url:'http://localhost:3001/top10byincomeday',
+        url:'https://apimanage.herokuapp.com/top10byincomeday',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -585,7 +585,7 @@ export const getTopUsersDayRequest = (token) =>{
 function SendGetTopUsersMonth(token){
     const res = axios({
         method:'GET',
-        url:'http://localhost:3001/top10byincomemonth',
+        url:'https://apimanage.herokuapp.com/top10byincomemonth',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -616,7 +616,7 @@ export const getTopUsersMonthRequest = (token) =>{
 function SendGetTopUsersYear(token){
     const res = axios({
         method:'GET',
-        url:'http://localhost:3001/top10byincomeyear',
+        url:'https://apimanage.herokuapp.com/top10byincomeyear',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
@@ -648,7 +648,7 @@ export const getTopUsersYearRequest = (token) =>{
 function SendGetTopUsersWeek(token){
     const res = axios({
         method:'GET',
-        url:'http://localhost:3001/top10byincomeweek',
+        url:'https://apimanage.herokuapp.com/top10byincomeweek',
         headers:{Authorization: `Bearer ${token}`},
     }).catch(err => {
         return err;
