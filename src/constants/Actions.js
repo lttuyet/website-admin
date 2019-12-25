@@ -8,6 +8,11 @@ export  const DELETE_ADMIN = 'DELETE_ADMIN';
 export const GET_ALL_TAG = 'GET_ALL_TAG';
 export  const DELETE_TAG = 'DELETE_TAG';
 export const INSERT_TAG = 'INSERT_TAG';
+export const GET_TOP_BY_TAG = 'GET_TOP_BY_TAG';
+export const GET_TOP_BY_TAG_DAY = 'GET_TOP_BY_TAG_DAY';
+export const GET_TOP_BY_TAG_MONTH = 'GET_TOP_BY_TAG_MONTH';
+export const GET_TOP_BY_TAG_YEAR = 'GET_TOP_BY_TAG_YEAR';
+export const GET_TOP_BY_TAG_WEEK = 'GET_TOP_BY_TAG_WEEK';
 // ----------------------------- USER --------------------------
 export const GET_ALL_USER = 'GET_ALL_USER';
 export const GET_DETAIL = 'GET_DETAIL';

@@ -1,19 +1,19 @@
 import * as constants from '../constants/Actions';
 
 export const initialState = {
-  toplist: [],
+  toptaglist: [],
   
   err: ''
 };
 
-function TopListReducer(state = initialState, action) {
+function TopTagListReducer(state = initialState, action) {
   // let status = '';
   switch (action.type) {
-    case constants.GET_TOP_BY_INCOME: {
+    case constants.GET_TOP_BY_TAG: {
       const st = { ...state };
-      st.toplist = [];
+      st.toptaglist = [];
       try{
-      st.toplist = action.data.res;
+      st.toptaglist = action.data.res;
       }catch(e){
           console.log(e);
       }
@@ -21,11 +21,11 @@ function TopListReducer(state = initialState, action) {
       // window.location.href = '/tag-list';
       return st;
     }
-    case constants.GET_TOP_BY_INCOME_DAY: {
+    case constants.GET_TOP_BY_TAG_DAY: {
         const st = { ...state };
-        st.toplist = [];
+        st.toptaglist = [];
         try{
-            st.toplist = action.data.res;
+            st.toptaglist = action.data.res;
             }catch(e){
                 console.log(e);
             }
@@ -33,11 +33,11 @@ function TopListReducer(state = initialState, action) {
         // window.location.href = '/tag-list';
         return st;
       }
-      case constants.GET_TOP_BY_INCOME_WEEK: {
+      case constants.GET_TOP_BY_TAG_WEEK: {
         const st = { ...state };
-        st.toplist = [];
+        st.toptaglist = [];
         try{
-            st.toplist = action.data.res;
+            st.toptaglist = action.data.res;
             }catch(e){
                 console.log(e);
             }
@@ -45,11 +45,11 @@ function TopListReducer(state = initialState, action) {
         // window.location.href = '/tag-list';
         return st;
       }
-      case constants.GET_TOP_BY_INCOME_MONTH: {
+      case constants.GET_TOP_BY_TAG_MONTH: {
         const st = { ...state };
-        st.toplist = [];
+        st.toptaglist = [];
         try{
-            st.toplist = action.data.res;
+            st.toptaglist = action.data.res;
             }catch(e){
                 console.log(e);
             }
@@ -57,11 +57,11 @@ function TopListReducer(state = initialState, action) {
         // window.location.href = '/tag-list';
         return st;
       }
-      case constants.GET_TOP_BY_INCOME_YEAR: {
+      case constants.GET_TOP_BY_TAG_YEAR: {
         const st = { ...state };
-        st.toplist = [];
+        st.toptaglist = [];
         try{
-            st.toplist = action.data.res;
+            st.toptaglist = action.data.res;
             }catch(e){
                 console.log(e);
             }
@@ -76,4 +76,4 @@ function TopListReducer(state = initialState, action) {
   }
 }
 
-export default TopListReducer;
+export default TopTagListReducer;

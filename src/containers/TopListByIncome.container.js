@@ -7,7 +7,8 @@ const mapstToProps = state => {
     
     isLogin: state.AccountReducer.isLogin,
     token: state.AccountReducer.token,
-    toplist: state.TopListReducer.toplist
+    toplist: state.TopListReducer.toplist,
+    toptaglist: state.TopTagListReducer.toptaglist,
 
   };
 };
@@ -19,6 +20,7 @@ const mapDispatchToProps = (dispatch) => {
     getTopUsersMonth : (token) => dispatch( actions.getTopUsersMonthRequest(token)),
     getTopUsersYear : (token) => dispatch( actions.getTopUsersYearRequest(token)),
     getTopUsersWeek : (token) => dispatch( actions.getTopUsersWeekRequest(token)),
+    getTopTags : (token) => dispatch( actions.getTopTagsRequest(token)),
     
 
   };

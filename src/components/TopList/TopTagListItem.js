@@ -1,20 +1,16 @@
 import React from 'react';
 
 import '../App.css';
-import img from '../../logo192.png';
 
-function TopListByIncomeItem(prps) {
+
+function TopTagListItem(prps) {
   
   return (
     
     <tr className="">
         
       <td className="align-middle">{prps.index}</td>
-      <td>
-        
-        <img src={prps.image||img} className = "img-thumbnail" style={{width: "60px"}}  alt="..."/>
-        
-      </td>
+      
       <td className="align-middle">{prps.name} &nbsp; 
       {prps.index === 1 &&
         <i className="fas fa-crown text-warning" />
@@ -32,4 +28,4 @@ function TopListByIncomeItem(prps) {
   );
 }
 
-export default TopListByIncomeItem;
+export default TopTagListItem;

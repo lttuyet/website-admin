@@ -14,28 +14,29 @@ import '../App.css';
 // import UserListItem from './UserListItem';
 import Footer from '../Footer';
 // import TagListItem from './TagList/TagListItem';
-import TopListByIncomeItem from './TopListByIncomeItem';
+import TopTagListItem from './TopTagListItem';
 
-class TopListByIncome extends PureComponent {
+class TopTagList extends PureComponent {
   // eslint-disable-next-line react/no-deprecated
 
   constructor(){
     super();
-    this.titleTB = "TOP THU NHẬP CỦA GIA SƯ";
-    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP GIA SƯ";
+    this.titleTB = "TOP THU NHẬP CỦA KỸ NĂNG";
+    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP KỸ NĂNG";
   }
 
   componentDidMount() {
     const st = this.props;
-    st.getTopUsers(st.token);
+    st.getTopTags(st.token);
+    console.log(st);
   }
 
   renderItem(item, i) {
     return (
-      <TopListByIncomeItem
+      <TopTagListItem
         index={i}
         name={item.name[0]}
-        image={item.image[0]}
+        
         total={item.total}
       />
     );
@@ -54,14 +55,14 @@ class TopListByIncome extends PureComponent {
     let l = [];
     const _label = [];
     const _money = [];
-    if (st.toplist) {
-      l = st.toplist;
+    if (st.toptaglist) {
+      l = st.toptaglist;
 
       console.log('lờ nè', l);
 
-      this.list = l.toplist.map((item, i) => this.renderItem(item, i + 1));
-      l.toplist.map((item) => {_label.push(item.name[0]);});
-      l.toplist.map((item) => {_money.push(item.total);});
+      this.list = l.taglist.map((item, i) => this.renderItem(item, i + 1));
+      l.taglist.map((item) => {_label.push(item.name[0]);});
+      l.taglist.map((item) => {_money.push(item.total);});
     }
     // const listT = ["Tiếng Anh","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React","Toán","MongoDB","React"];
 
@@ -125,10 +126,10 @@ class TopListByIncome extends PureComponent {
                           {this.titleCH}
                         </h6>
                       </div>
-                      <div className="card-body" style={{height:"500px"}}>
+                      <div className="card-body" style={{height:"450px"}}>
                         <Bar
                           data={data}
-                          height={200}
+                          height={180}
                           options={{ }}
                         />
                       </div>
@@ -136,16 +137,16 @@ class TopListByIncome extends PureComponent {
                   </div>
                 </div>
                 <div className="d-block-inline mx-auto m-md-2">
-                <button type="button" className="btn btn-success m-md-2" onClick={()=>{st.getTopUsers(st.token); this.titleTB = "TOP THU NHẬP CỦA GIA SƯ";
-    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP GIA SƯ";}}>Tất Cả</button>
-                <button type="button" className="btn btn-info m-md-2" onClick={()=>{st.getTopUsersDay(st.token); this.titleTB = "TOP THU NHẬP CỦA GIA SƯ THEO NGÀY";
-    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP GIA SƯ THEO NGÀY"; ;}}>Theo Ngày</button>
-    <button type="button" className="btn btn-info m-md-2" onClick={()=>{st.getTopUsersWeek(st.token); this.titleTB = "TOP THU NHẬP CỦA GIA SƯ THEO TUẦN";
-    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP GIA SƯ THEO TUẦN"; ;}}>Theo Tuần</button>
-                <button type="button" className="btn btn-info m-md-2" onClick={()=>{st.getTopUsersMonth(st.token); this.titleTB = "TOP THU NHẬP CỦA GIA SƯ THEO THÁNG";
-    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP GIA SƯ THEO THÁNG"; ;}}>Theo Tháng</button>
-                <button type="button" className="btn btn-info m-md-2" onClick={()=>{st.getTopUsersYear(st.token); this.titleTB = "TOP THU NHẬP CỦA GIA SƯ THEO NĂM";
-    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP GIA SƯ THEO NĂM"; ;}}>Theo Năm</button>
+                <button type="button" className="btn btn-success m-md-2" onClick={()=>{st.getTopTags(st.token); this.titleTB = "TOP THU NHẬP CỦA KỸ NĂNG";
+    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP KỸ NĂNG";}}>Tất Cả</button>
+                <button type="button" className="btn btn-info m-md-2" onClick={()=>{st.getTopTagsDay(st.token); this.titleTB = "TOP THU NHẬP CỦA KỸ NĂNG THEO NGÀY";
+    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP KỸ NĂNG THEO NGÀY"; ;}}>Theo Ngày</button>
+    <button type="button" className="btn btn-info m-md-2" onClick={()=>{st.getTopTagsWeek(st.token); this.titleTB = "TOP THU NHẬP CỦA KỸ NĂNG THEO TUẦN";
+    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP KỸ NĂNG THEO TUẦN"; ;}}>Theo Tuần</button>
+                <button type="button" className="btn btn-info m-md-2" onClick={()=>{st.getTopTagsMonth(st.token); this.titleTB = "TOP THU NHẬP CỦA KỸ NĂNG THEO THÁNG";
+    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP KỸ NĂNG THEO THÁNG"; ;}}>Theo Tháng</button>
+                <button type="button" className="btn btn-info m-md-2" onClick={()=>{st.getTopTagsYear(st.token); this.titleTB = "TOP THU NHẬP CỦA KỸ NĂNG THEO NĂM";
+    this.titleCH = "BIỂU ĐỒ THU NHẬP TOP KỸ NĂNG THEO NĂM"; ;}}>Theo Năm</button>
                 
                 </div>
                 
@@ -162,4 +163,4 @@ class TopListByIncome extends PureComponent {
   }
 }
 
-export default TopListByIncome;
+export default TopTagList;

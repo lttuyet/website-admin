@@ -12,6 +12,7 @@ import ContractListContainer from '../containers/ContractList.container';
 import AdminListContainer from '../containers/AdminList.container';
 import DetailContractContainer from '../containers/DetailContract.container';
 import TopListByIncomeContainer from '../containers/TopListByIncome.container';
+import TopTagListContainer from '../containers/TopTagList.container';
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -31,6 +32,9 @@ const Root = ({ store }) => (
         </Route>
         <Route path="/top-list-by-income">
           <TopListByIncomeContainer/>
+        </Route>
+        <Route path="/top-list-by-tag">
+          <TopTagListContainer/>
         </Route>
         <Route path="/tag-list">
           <TagListContainer/>

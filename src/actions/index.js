@@ -218,6 +218,167 @@ export const insertTagRequest = (token,name)=>{
         });
     });
 };
+
+// Get top 5 tag
+function SendGetTopTags(token){
+    const res = axios({
+        method:'GET',
+        url:'http://localhost:3001/top10incomebytag',
+        headers:{Authorization: `Bearer ${token}`},
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const getTopTags = (token,res)=>({
+    type: constants.GET_TOP_BY_TAG,
+    data: {
+        token,
+        res
+    }
+});
+
+export const getTopTagsRequest = (token) =>{
+    return (dispatch =>{
+        SendGetTopTags(token).then(res=>{
+            // console.log("request",res.data);
+            return dispatch(getTopTags(token,res.data));
+        });
+    });
+};
+
+// Get top 5 user by day
+function SendGetTopTagsDay(token){
+    const res = axios({
+        method:'GET',
+        url:'http://localhost:3001/top10incomebytagbyday',
+        headers:{Authorization: `Bearer ${token}`},
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const getTopTagsDay = (token,res)=>({
+    type: constants.GET_TOP_BY_TAG_DAY,
+    data: {
+        token,
+        res
+    }
+});
+
+export const getTopTagsDayRequest = (token) =>{
+    return (dispatch =>{
+        SendGetTopTagsDay(token).then(res=>{
+            // console.log("request",res.data);
+            return dispatch(getTopTagsDay(token,res.data));
+        });
+    });
+};
+
+// Get top 5 user by month
+function SendGetTopTagsMonth(token){
+    const res = axios({
+        method:'GET',
+        url:'http://localhost:3001/top10incomebytagbymonth',
+        headers:{Authorization: `Bearer ${token}`},
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const getTopTagsMonth = (token,res)=>({
+    type: constants.GET_TOP_BY_TAG_MONTH,
+    data: {
+        token,
+        res
+    }
+});
+
+export const getTopTagsMonthRequest = (token) =>{
+    return (dispatch =>{
+        SendGetTopTagsMonth(token).then(res=>{
+            // console.log("request",res.data);
+            return dispatch(getTopTagsMonth(token,res.data));
+        });
+    });
+};
+
+// Get top 5 user by year
+function SendGetTopTagsYear(token){
+    const res = axios({
+        method:'GET',
+        url:'http://localhost:3001/top10incomebytagbyyear',
+        headers:{Authorization: `Bearer ${token}`},
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const getTopTagsYear = (token,res)=>({
+    type: constants.GET_TOP_BY_TAG_YEAR,
+    data: {
+        token,
+        res
+    }
+});
+
+export const getTopTagsYearRequest = (token) =>{
+    return (dispatch =>{
+        SendGetTopTagsYear(token).then(res=>{
+            // console.log("request",res.data);
+            return dispatch(getTopTagsYear(token,res.data));
+        });
+    });
+};
+
+
+// Get top 5 user by week
+function SendGetTopTagsWeek(token){
+    const res = axios({
+        method:'GET',
+        url:'http://localhost:3001/top10incomebytagbyweek',
+        headers:{Authorization: `Bearer ${token}`},
+    }).catch(err => {
+        return err;
+    });
+
+    return res;
+
+};
+
+export const getTopTagsWeek = (token,res)=>({
+    type: constants.GET_TOP_BY_TAG_WEEK,
+    data: {
+        token,
+        res
+    }
+});
+
+export const getTopTagsWeekRequest = (token) =>{
+    return (dispatch =>{
+        SendGetTopTagsWeek(token).then(res=>{
+            // console.log("request",res.data);
+            return dispatch(getTopTagsWeek(token,res.data));
+        });
+    });
+};
+
+
+
+
+
 // ============================================== USER =======================================================
 // Get all user
 function SendGetAllUsers(token){
@@ -389,7 +550,7 @@ export const getTopUsersRequest = (token) =>{
     });
 };
 
-// Get top 10 user by day
+// Get top 5 user by day
 function SendGetTopUsersDay(token){
     const res = axios({
         method:'GET',

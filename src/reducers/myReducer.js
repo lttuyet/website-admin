@@ -4,6 +4,7 @@ import TagReducer from './Tag.reducer';
 import UserReducer from './User.reducer';
 import ContractReducer from './Contract.reducer';
 import TopListReducer from './TopList.reducer';
+import TopTagListReducer from './TopTagList.reducer';
 
 const myReducer = combineReducers({
     AccountReducer,
@@ -11,6 +12,8 @@ const myReducer = combineReducers({
     UserReducer,
     ContractReducer,
     TopListReducer,
+    TopTagListReducer
+
 });
   
 export default myReducer;
